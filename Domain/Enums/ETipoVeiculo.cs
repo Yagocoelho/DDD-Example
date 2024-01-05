@@ -9,10 +9,10 @@ namespace Domain.Enums
     public enum ETipoVeiculo
     {
 
-        Ranger = 1,
-        Onix = 2,
-        Model3 = 3,
-        HB20 = 4,
+        SUV = 1,
+        Sedan = 2,
+        Hatch = 3,
+        Utilitario = 4,
         Peugeot208 = 5,
     }
 }

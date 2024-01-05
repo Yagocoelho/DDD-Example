@@ -1,11 +1,46 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Domain.dll": {}
+        }
+      },
+      "Infraestructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Infraestructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infraestructure.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Domain/1.0.0": {
+      "type": "project",
+      "path": "../Domain/Domain.csproj",
+      "msbuildProject": "../Domain/Domain.csproj"
+    },
+    "Infraestructure/1.0.0": {
+      "type": "project",
+      "path": "../Infraestructure/Infraestructure.csproj",
+      "msbuildProject": "../Infraestructure/Infraestructure.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "Domain >= 1.0.0",
+      "Infraestructure >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\yago.scoelho\\.nuget\\packages\\": {},
@@ -38,7 +73,14 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\yago.scoelho\\source\\repos\\Application\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\yago.scoelho\\source\\repos\\Application\\Domain\\Domain.csproj"
+            },
+            "C:\\Users\\yago.scoelho\\source\\repos\\Application\\Infraestructure\\Infraestructure.csproj": {
+              "projectPath": "C:\\Users\\yago.scoelho\\source\\repos\\Application\\Infraestructure\\Infraestructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
