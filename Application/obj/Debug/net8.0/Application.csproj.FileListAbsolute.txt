@@ -35,3 +35,5 @@ C:\Users\yago.scoelho\source\repos\Application\Application\obj\Debug\net8.0\refi
 C:\Users\yago.scoelho\source\repos\Application\Application\obj\Debug\net8.0\Application.pdb
 C:\Users\yago.scoelho\source\repos\Application\Application\obj\Debug\net8.0\Application.genruntimeconfig.cache
 C:\Users\yago.scoelho\source\repos\Application\Application\obj\Debug\net8.0\ref\Application.dll
+C:\Users\yago.scoelho\source\repos\Application\Application\bin\Debug\net8.0\Infraestructure.dll
+C:\Users\yago.scoelho\source\repos\Application\Application\bin\Debug\net8.0\Infraestructure.pdb

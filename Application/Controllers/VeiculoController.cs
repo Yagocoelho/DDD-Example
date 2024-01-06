@@ -18,8 +18,8 @@ namespace Application.Controllers
         [Route("CadastrarVeiculos")]
         public async Task<IActionResult> PostAsync([FromBody] VeiculoCommand command)
         {
-            await _veiculoservice.PostAsync(command);
-            return Ok();
+            
+            return Ok(await _veiculoservice.PostAsync(command));
         }
         [HttpGet]
         [Route("SimularAluguel")]
