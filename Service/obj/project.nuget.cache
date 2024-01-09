@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/urf+jQZCdgaGSV3UCVybcYlmaU9EvTcogv0tNKoV80LswXfVe35IakxKG/VZ93xRqqLxJJ2BlWCOVdcRTfdmQ==",
+  "dgSpecHash": "x6pXe7ttjlc9ZgTmVPqJP6+p3V0yMQvo90kuM/AiBbl3PX0UQmC3xqGpyO5WbW8NLAPzm1frWB3Z1qjND1BtIQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\yago.scoelho\\source\\repos\\Application\\Service\\Service.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\yago.scoelho\\.nuget\\packages\\dapper\\2.1.28\\dapper.2.1.28.nupkg.sha512"
+  ],
   "logs": []
 }

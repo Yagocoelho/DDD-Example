@@ -90,7 +90,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\yago.scoelho\\source\\repos\\Application\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\yago.scoelho\\source\\repos\\Application\\Domain\\Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -102,6 +106,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.28, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
