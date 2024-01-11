@@ -11,6 +11,12 @@ namespace Service.Services
 {
     public class VeiculoService : IVeiculoService
     {
+        private readonly IVeiculoRepository _repository;
+
+        public VeiculoService(IVeiculoRepository repository)
+        {
+            _repository = repository;
+        }
         public void GetAsync()
         {
             throw new NotImplementedException();
@@ -31,7 +37,11 @@ namespace Service.Services
             if (command == null)
                 return "Todos os campos são obrigatorios";
 
-           return await ValidaTipoCarro(command.TipoVeiculo, command.AnoFabricacao);
+            var erro = await ValidaTipoCarro(command.TipoVeiculo, command.AnoFabricacao);
+            if (erro != null)
+                return erro.ToString();
+
+            return await _repository.PostAsync(command);
         }
 
         private async Task<string> ValidaTipoCarro(ETipoVeiculo tipoVeiculo, int AnoFabricacao)
@@ -42,17 +52,17 @@ namespace Service.Services
                 && tipoVeiculo != ETipoVeiculo.Hatch
                 && tipoVeiculo != ETipoVeiculo.Sedan
                 )
-            
+
                 return "O tipo de Veiculo não é permitidio";
 
-            
-            if ((anoBase - AnoFabricacao) > 5 && (AnoFabricacao > anoBase) )
+
+            if ((anoBase - AnoFabricacao) > 5 && (AnoFabricacao > anoBase))
             {
                 return "Veiculo não pode ser cadastrado,possui menos que o permitido";
 
             }
 
-            return _veiculoRepository.PostAsync(command);
+            return null;
         }
         #endregion
 
