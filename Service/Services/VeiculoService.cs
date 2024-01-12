@@ -17,12 +17,6 @@ namespace Service.Services
         {
             _repository = repository;
         }
-        public void GetAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-
         #region regras
         //Todo
         //incluir validação, só podem cadastrar veículos com 
@@ -67,6 +61,17 @@ namespace Service.Services
         #endregion
 
         public void PostAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<VeiculoCommand>> GetVeiculosAlugadosAsync()
+        {
+            return await _repository.GetVeiculosAlugadosAsync(); 
+            
+        }
+
+        public void GetAllAsync()
         {
             throw new NotImplementedException();
         }
