@@ -47,7 +47,7 @@ namespace Service.Services
                 && tipoVeiculo != ETipoVeiculo.Sedan
                 )
 
-                return "O tipo de Veiculo não é permitidio";
+                return "O tipo de Veiculo não é permitido";
 
 
             if ((anoBase - AnoFabricacao) > 5 && (AnoFabricacao > anoBase))
@@ -68,6 +68,11 @@ namespace Service.Services
         public async Task<IEnumerable<VeiculoCommand>> GetVeiculosAlugadosAsync()
         {
             return await _repository.GetVeiculosAlugadosAsync(); 
+            
+        }        
+        public async Task<IEnumerable<VeiculoCommand>> GetVeiculosDisponiveisAsync()
+        {
+            return await _repository.GetVeiculosDisponiveisAsync(); 
             
         }
 

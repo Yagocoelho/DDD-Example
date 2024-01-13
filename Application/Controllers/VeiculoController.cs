@@ -38,6 +38,12 @@ namespace Application.Controllers
         public async Task<IActionResult> GetVeiculosAlugadosAsync()
         {
             return Ok(await _veiculoservice.GetVeiculosAlugadosAsync());
+        }        
+        [HttpGet]
+        [Route("VeiculosDisponiveis")]
+        public async Task<IActionResult> GetVeiculosDisponiveisAsync()
+        {
+            return Ok(await _veiculoservice.GetVeiculosDisponiveisAsync());
         }
 
     }

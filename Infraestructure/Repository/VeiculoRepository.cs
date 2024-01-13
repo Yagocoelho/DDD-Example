@@ -39,6 +39,14 @@ namespace Infraestructure.Repository
         }
         public async Task<IEnumerable<VeiculoCommand>> GetVeiculosAlugadosAsync()
         {
+            string queryGet = @"SELECT * FROM Veiculo WHERE Alugado=0";
+            using (SqlConnection conn = new SqlConnection(conexao))
+            {
+                return await conn.QueryAsync<VeiculoCommand>(queryGet);
+            }
+        }       
+        public async Task<IEnumerable<VeiculoCommand>> GetVeiculosDisponiveisAsync()
+        {
             string queryGet = @"SELECT * FROM Veiculo WHERE Alugado=1";
             using (SqlConnection conn = new SqlConnection(conexao))
             {

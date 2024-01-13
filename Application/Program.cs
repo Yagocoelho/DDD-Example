@@ -12,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IVeiculoService,VeiculoService>();
 builder.Services.AddScoped<IVeiculoRepository, VeiculoRepository>();
+builder.Services.AddScoped<IPessoaService, PessoaService>();
+builder.Services.AddScoped<IPessoaRepository, PessoaRepository>();
 
 var app = builder.Build();
 
