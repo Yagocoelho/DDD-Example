@@ -22,7 +22,7 @@ namespace Infraestructure.Repository
                 conn.Execute(queryInsert, new
                 {
                     NomeCompleto = command.NomeCompleto,
-                    DataNascimento = command.DataNascimento.ToShortDateString(),
+                    DataNascimento = command.DataNascimento.Date,
                     Habilitacao = command.Habilitacao,
                     Estado = command.Estado
                 });

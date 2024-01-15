@@ -33,8 +33,8 @@ namespace Service.Services
         private async Task<string> ValidaCliente(PessoaCommand command)
         {
             int anoBase = DateTime.Now.Year;
-            int calculo = anoBase % command.DataNascimento.Year;
-            if (calculo != 18)
+            double calculo = anoBase % command.DataNascimento.Year;
+            if (calculo <=18)
             {
                 return "Cliente não Pode ser cadastrado,possui menos que o permitido";
 
