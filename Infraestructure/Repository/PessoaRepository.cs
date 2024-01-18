@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ namespace Infraestructure.Repository
 {
     public class PessoaRepository : IPessoaRepository
     {
+
         private string conexao = @"Server=(localdb)\mssqllocaldb;Database=AluguelVeiculos;Trusted_Connection=True;MultipleActiveResultSets=True";
         public async Task<string> PostAsync(PessoaCommand command)
         {
@@ -30,5 +32,20 @@ namespace Infraestructure.Repository
             return "Cliente cadastrado com sucesso";
         }
 
-    }
+        
+
+        public async Task<IEnumerable<ByEstadoCommand>> GetClientesbyEstadoAsync(ByEstadoCommand command)
+        {
+            string queryGetby = @"SELECT * FROM Cliente WHERE Estado = @Estado";
+            using (SqlConnection conn = new SqlConnection(conexao))
+            {
+                
+                return await conn.QueryAsync<ByEstadoCommand>(queryGetby, new { Estado = command.Estado });
+
+
+            }
+        }
+
+
+    }      
 }

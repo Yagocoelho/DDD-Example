@@ -1,7 +1,9 @@
 ﻿using Domain.Commands;
+using Domain.Enums;
 using Domain.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Service.Services;
 
 namespace Application.Controllers
 {
@@ -21,12 +23,6 @@ namespace Application.Controllers
             
             return Ok(await _veiculoservice.PostAsync(command));
         }
-        [HttpGet]
-        [Route("SimularAluguel")]
-        public IActionResult GetAsync() 
-        {
-            return Ok();
-        }
         [HttpPost]
         [Route("Alugar")]
         public IActionResult PostAsync()
@@ -44,6 +40,12 @@ namespace Application.Controllers
         public async Task<IActionResult> GetVeiculosDisponiveisAsync()
         {
             return Ok(await _veiculoservice.GetVeiculosDisponiveisAsync());
+        }
+        [HttpGet]
+        [Route("SimularAluguel")]
+        public async Task<IActionResult> GetAsync(int DiasSimulacaoAluguel, ETipoVeiculo tipoVeiculo)
+        {
+            return Ok(await _veiculoservice.SimularVeiculoAluguel(DiasSimulacaoAluguel, tipoVeiculo));
         }
 
     }

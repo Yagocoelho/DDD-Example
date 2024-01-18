@@ -18,6 +18,12 @@ namespace Service.Services
                 _repository = repository;
       }
 
+        public async Task<IEnumerable<ByEstadoCommand>> GetClientesbyEstadoAsync(ByEstadoCommand command)
+        {
+            
+            return await _repository.GetClientesbyEstadoAsync(command);
+        }
+
         public async Task<string> PostAsync(PessoaCommand command)
         {
             if (command == null)

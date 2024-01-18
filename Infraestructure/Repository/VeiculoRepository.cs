@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Domain.Commands;
 using Domain.Entidades;
+using Domain.Enums;
 using Domain.Interfaces;
 using System.Data.SqlClient;
 
@@ -20,7 +21,7 @@ namespace Infraestructure.Repository
                 {
                     Placa = command.Placa,
                     AnoFabricacao = command.AnoFabricacao,
-                    TipoVeiculoId =  (int) command.TipoVeiculo,
+                    TipoVeiculoId = (int)command.TipoVeiculo,
                     Estado = command.Estado,
                     MontadoraId = (int)command.Montadora
                 });
@@ -44,13 +45,27 @@ namespace Infraestructure.Repository
             {
                 return await conn.QueryAsync<VeiculoCommand>(queryGet);
             }
-        }       
+        }
         public async Task<IEnumerable<VeiculoCommand>> GetVeiculosDisponiveisAsync()
         {
             string queryGet = @"SELECT * FROM Veiculo WHERE Alugado=1";
             using (SqlConnection conn = new SqlConnection(conexao))
             {
                 return await conn.QueryAsync<VeiculoCommand>(queryGet);
+            }
+        }
+        public async Task<VeiculoPrecoCommand> GetPrecoDiaria(ETipoVeiculo tipoVeiculo)
+        {
+            string queryGetPrecoDiaria = @"SELECT * FROM VeiculoPreco
+                                           WHERE TIPOVEICULO = @TIPOVEICULO";
+
+            using (SqlConnection conn = new SqlConnection(conexao))
+            {
+                return conn.QueryAsync<VeiculoPrecoCommand>(queryGetPrecoDiaria, new
+                {
+                    TipoVeiculo = tipoVeiculo
+                }).Result.FirstOrDefault();
+
             }
         }
     }

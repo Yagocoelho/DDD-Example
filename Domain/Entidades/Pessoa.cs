@@ -9,6 +9,10 @@ namespace Domain.Entidades
 {
     public class Pessoa
     {
+        public Pessoa()
+        {
+
+        }
         public int PessoaId { get; set; }
         public string NomeCompleto { get; set; }
         public DateTime DataNascimento { get; set; }

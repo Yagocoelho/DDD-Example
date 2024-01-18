@@ -19,8 +19,15 @@ namespace Application.Controllers
         [Route("CadastrarCliente")]
         public async Task<IActionResult> PostAsync([FromBody] PessoaCommand command)
         {
-
             return Ok(await _pessoaservice.PostAsync(command));
+        }
+
+        [HttpPost]
+        [Route("ClientesbyEstado")]
+        public async Task<IActionResult> GetClientesbyEstadoAsync(ByEstadoCommand command)
+        {
+            //ByEstadoCommand command = new ByEstadoCommand() { Estado = estado};
+            return Ok(await _pessoaservice.GetClientesbyEstadoAsync(command));
         }
     }
 }

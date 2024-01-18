@@ -10,5 +10,7 @@ namespace Domain.Interfaces
     public interface IPessoaService
     {
         Task<string> PostAsync(PessoaCommand command);
+
+        Task<IEnumerable<ByEstadoCommand>> GetClientesbyEstadoAsync(ByEstadoCommand command);
     }
 }
