@@ -62,10 +62,17 @@ namespace Infraestructure.Repository
             using (SqlConnection conn = new SqlConnection(conexao))
             {
                 return conn.QueryAsync<VeiculoPrecoCommand>(queryGetPrecoDiaria, new
-                {
-                    TipoVeiculo = tipoVeiculo
-                }).Result.FirstOrDefault();
+                {TipoVeiculo = tipoVeiculo }).Result.FirstOrDefault();
 
+            }
+        }
+
+        public async Task<bool> VeiculoEstaAlugado(string placaVeiculo)
+        {
+            string queryDisponibilidadeVeiculo = @"SELECT Alugado FROM Veiculo WHERE Placa = @Placa";
+            using (SqlConnection conn = new SqlConnection(conexao))
+            {
+                return conn.QueryAsync<bool>(queryDisponibilidadeVeiculo, new { Placa = placaVeiculo }).Result.FirstOrDefault();
             }
         }
     }

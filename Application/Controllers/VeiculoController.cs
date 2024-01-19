@@ -1,6 +1,7 @@
 ﻿using Domain.Commands;
 using Domain.Enums;
 using Domain.Interfaces;
+using Domain.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Service.Services;
@@ -25,8 +26,9 @@ namespace Application.Controllers
         }
         [HttpPost]
         [Route("Alugar")]
-        public IActionResult PostAsync()
+        public async Task<IActionResult> PostAsync([FromBody]AlugarVeiculoViewModelInput input)
         {
+            await _veiculoservice.AlugarVeiculo(input);
             return Ok();
         }
         [HttpGet]

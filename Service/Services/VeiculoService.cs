@@ -5,6 +5,7 @@ using Domain.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -94,13 +95,47 @@ namespace Service.Services
             simulacao.TipoVeiculo = tipoVeiculo;
             simulacao.ValorDiaria = veiculoPreco.Preco;
             simulacao.ValorTotal = (totalDiasSimulado * veiculoPreco.Preco) + simulacao.Taxas;
-
-            
-
-
-
             return simulacao;
         }
 
+        public async Task AlugarVeiculo(AlugarVeiculoViewModelInput input)
+        {
+            //todo
+            //chamar método para validar disponibilidade de veiculo
+            var veiculoAlugado = await VeiculoEstaAlugado(input.PlacaVeiculo);
+            if(veiculoAlugado)
+            {
+               // "Este veiculo não está disponivel para alugar";
+            }
+
+            //todo
+            //chamar método para datas
+            if (input.DataRetirada < DateTime.Now)
+            {
+                //"Este veiculo não pode ser retirado nesse periodo";
+            }
+            if (input.DataRetirada > input.DataDevolucao)
+            {
+                //"Este veiculo não pode ser retirado nesse periodo";
+            }
+            if (input.DataDevolucao < DateTime.Now)
+            {
+                //"Este veiculo não pode ser retirado nesse periodo";
+            }
+
+                if (input.DataRetirada < DateTime.Now.AddDays ) 
+            {
+                //corrigir
+            }
+            //todo
+            //chamar método para validar habilitação
+            //"Veiculo alugado Pelo Cliente: "+ Cliente+ " Pelo periodo de: "+dataretirada - datadedevolução
+
+
+        }
+        private Task<bool> VeiculoEstaAlugado(string placaVeiculo)
+        { 
+            return _repository.VeiculoEstaAlugado(placaVeiculo);
+        }
     }
 }

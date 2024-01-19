@@ -13,10 +13,12 @@ namespace Domain.Interfaces
     {
         Task<string> PostAsync(VeiculoCommand command);
 
+        void GetAsync();
         void PostAsync();
         Task<IEnumerable<VeiculoCommand>> GetVeiculosAlugadosAsync();
         Task<IEnumerable<VeiculoCommand>> GetVeiculosDisponiveisAsync();
         Task<VeiculoPrecoCommand> GetPrecoDiaria(ETipoVeiculo tipoVeiculo);
-        void GetAsync();
+        Task<bool> VeiculoEstaAlugado(string placaVeiculo);
+        
     }
 }

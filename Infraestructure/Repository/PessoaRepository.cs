@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Domain.Commands;
+using Domain.Enums;
 using Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -39,13 +40,11 @@ namespace Infraestructure.Repository
             string queryGetby = @"SELECT * FROM Cliente WHERE Estado = @Estado";
             using (SqlConnection conn = new SqlConnection(conexao))
             {
-                
-                return await conn.QueryAsync<ByEstadoCommand>(queryGetby, new { Estado = command.Estado });
 
+                return await conn.QueryAsync<ByEstadoCommand>(queryGetby, new { Estado = command.Estado });
 
             }
         }
-
 
     }      
 }
