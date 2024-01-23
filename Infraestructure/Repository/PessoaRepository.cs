@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Infraestructure.Repository
 {
@@ -41,7 +42,7 @@ namespace Infraestructure.Repository
             using (SqlConnection conn = new SqlConnection(conexao))
             {
 
-                return await conn.QueryAsync<ByEstadoCommand>(queryGetby, new { Estado = command.Estado });
+                return await conn.QueryAsync<ByEstadoCommand>(queryGetby,new { Estado = command.Estado });
 
             }
         }

@@ -69,7 +69,7 @@ namespace Infraestructure.Repository
 
         public async Task<bool> VeiculoEstaAlugado(string placaVeiculo)
         {
-            string queryDisponibilidadeVeiculo = @"SELECT Alugado FROM Veiculo WHERE Placa = @Placa";
+            string queryDisponibilidadeVeiculo = @"SELECT Veiculo FROM Veiculo WHERE Alugado = @Alugado";
             using (SqlConnection conn = new SqlConnection(conexao))
             {
                 return conn.QueryAsync<bool>(queryDisponibilidadeVeiculo, new { Placa = placaVeiculo }).Result.FirstOrDefault();

@@ -1,4 +1,5 @@
-﻿using Domain.Commands;
+﻿using CreditCardValidator;
+using Domain.Commands;
 using Domain.Enums;
 using Domain.Interfaces;
 using Domain.ViewModel;
@@ -100,37 +101,32 @@ namespace Service.Services
 
         public async Task AlugarVeiculo(AlugarVeiculoViewModelInput input)
         {
-            //todo
-            //chamar método para validar disponibilidade de veiculo
-            var veiculoAlugado = await VeiculoEstaAlugado(input.PlacaVeiculo);
-            if(veiculoAlugado)
-            {
-               // "Este veiculo não está disponivel para alugar";
-            }
+
 
             //todo
-            //chamar método para datas
-            if (input.DataRetirada < DateTime.Now)
-            {
-                //"Este veiculo não pode ser retirado nesse periodo";
-            }
-            if (input.DataRetirada > input.DataDevolucao)
-            {
-                //"Este veiculo não pode ser retirado nesse periodo";
-            }
-            if (input.DataDevolucao < DateTime.Now)
-            {
-                //"Este veiculo não pode ser retirado nesse periodo";
-            }
+            
+            CreditCardDetector detector = new CreditCardDetector(Convert.ToString( input.Cartao.Numero));
+            var bandeira = detector.Brand; // => 4012888888881881
 
-                if (input.DataRetirada < DateTime.Now.AddDays ) 
-            {
-                //corrigir
-            }
-            //todo
+            if (!detector.IsValid()) { //"Cartao Invalido!";
+            } // => True
             //chamar método para validar habilitação
             //"Veiculo alugado Pelo Cliente: "+ Cliente+ " Pelo periodo de: "+dataretirada - datadedevolução
 
+
+        }
+        private async Task<bool> ValidarDatas(DateTime inicio, DateTime fim)
+        {
+            if (fim < inicio)
+                return false;
+            else if (fim == inicio)
+                return false;
+            else if (fim < DateTime.Now)
+                return false;
+            else if (inicio < DateTime.Now)
+                return false;
+            else
+                return true;
 
         }
         private Task<bool> VeiculoEstaAlugado(string placaVeiculo)
